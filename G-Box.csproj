@@ -7,4 +7,13 @@
         <RootNamespace>G_Box</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Models\" />
+      <Folder Include="ServiceContracts\" />
+      <Folder Include="Services\" />
+    </ItemGroup>
+
+    <Target Name="TailwindBuild" AfterTargets="Build">
+        <Exec Command="npm run build:css" />
+    </Target>
 </Project>

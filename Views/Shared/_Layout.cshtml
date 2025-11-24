@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <link href="~/tailwind.css" rel="stylesheet" />
+</head>
+
+<body class="min-h-screen bg-[#050505] text-gray-100">
+<div class="relative flex min-h-screen flex-col overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-40">
+        <div class="absolute -top-32 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-violet-600 blur-[140px]"></div>
+        <div class="absolute bottom-0 right-0 h-64 w-64 translate-x-1/3 rounded-full bg-cyan-500 blur-[140px]"></div>
+    </div>
+
+    <header class="sticky top-0 z-20 border-b border-white/5 bg-[#050505]/80 backdrop-blur-xl">
+        <div class="mx-auto flex h-16 max-w-7xl items-center gap-6 px-6">
+            <a href="/" class="flex items-center gap-3 font-semibold tracking-wide text-white">
+                <img src="~/images/logo.png" class="h-8 w-auto" alt="G Box logo" />
+                <span class="hidden sm:inline">G Box</span>
+            </a>
+
+            <div class="hidden flex-1 lg:flex">
+                <label class="flex w-full items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-gray-300 focus-within:border-white/40">
+                    <svg class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <circle cx="9" cy="9" r="6"></circle>
+                        <path d="m14 14 4 4"></path>
+                    </svg>
+                    <input type="search" class="w-full bg-transparent placeholder:text-gray-500 focus:outline-none" placeholder="Search 800k+ adventures" />
+                </label>
+            </div>
+
+            <nav class="hidden items-center gap-6 text-sm text-gray-300 md:flex">
+                <a href="/discover" class="hover:text-white">Discover</a>
+                <a href="/reviews" class="hover:text-white">Reviews</a>
+                <a href="/releases" class="hover:text-white">New Releases</a>
+                <a href="/api" class="hover:text-white">API</a>
+            </nav>
+
+            <div class="flex flex-1 items-center justify-end gap-3 text-sm lg:flex-none">
+                <a href="/login" class="text-gray-300 hover:text-white">Log in</a>
+                <a href="/signup" class="rounded-full bg-white px-4 py-2 font-semibold text-black transition hover:-translate-y-0.5">Join beta</a>
+            </div>
+        </div>
+
+        <div class="border-t border-white/5 bg-black/40">
+            <div class="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-6 py-3 text-xs font-medium uppercase tracking-[0.2em] text-gray-400">
+                <a href="/platforms" class="hover:text-white">Platforms</a>
+                <a href="/genres" class="hover:text-white">Genres</a>
+                <a href="/collections" class="hover:text-white">Collections</a>
+                <a href="/wishlists" class="hover:text-white">Wishlists</a>
+                <a href="/teams" class="hover:text-white">Studios</a>
+                <a href="/all-games" class="hover:text-white">Show all</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative flex-1">
+        <div class="mx-auto max-w-7xl space-y-10 px-6 py-10">
+            <section class="rounded-3xl border border-white/5 bg-white/5 p-8 shadow-2xl shadow-indigo-500/10">
+                <div class="flex flex-col gap-8 lg:flex-row lg:items-center">
+                    <div class="flex-1">
+                        <p class="text-xs uppercase tracking-[0.3em] text-indigo-300">Discover</p>
+                        <h1 class="mt-3 text-3xl font-semibold text-white md:text-4xl">Find your next favorite world</h1>
+                        <p class="mt-4 text-sm text-gray-300">Curated lists, lightning-fast filters, and real-time RAWG data help you go from browsing to playing in seconds.</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <a href="/collections" class="rounded-full border border-white/20 px-5 py-2 text-sm font-semibold text-white transition hover:border-white/50">Browse catalog</a>
+                        <a href="/releases" class="rounded-full bg-indigo-500 px-5 py-2 text-sm font-semibold text-white transition hover:bg-indigo-400">Latest drops</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="rounded-3xl border border-white/5 bg-black/50 p-6">
+                <p class="mb-4 text-xs font-semibold uppercase tracking-[0.4em] text-gray-400">Trending tags</p>
+                <div class="flex flex-wrap gap-3 text-sm text-gray-200">
+                    <span class="rounded-full border border-white/10 px-4 py-1">Soulslike</span>
+                    <span class="rounded-full border border-white/10 px-4 py-1">Indie darlings</span>
+                    <span class="rounded-full border border-white/10 px-4 py-1">Co-op quests</span>
+                    <span class="rounded-full border border-white/10 px-4 py-1">Pixel art</span>
+                    <span class="rounded-full border border-white/10 px-4 py-1">Open world</span>
+                    <span class="rounded-full border border-white/10 px-4 py-1">Metroidvania</span>
+                </div>
+            </section>
+
+            <section class="rounded-3xl border border-white/5 bg-black/70 p-6 shadow-lg shadow-black/20">
+                @RenderBody()
+            </section>
+        </div>
+    </main>
+
+    <footer class="border-t border-white/5 bg-black/70">
+        <div class="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-8 text-sm text-gray-400 md:flex-row md:items-center md:justify-between">
+            <p>© @DateTime.Now.Year — G Box. Powered by RAWG.</p>
+            <div class="flex flex-wrap gap-4 uppercase tracking-[0.2em]">
+                <a href="/about" class="hover:text-white">About</a>
+                <a href="/privacy" class="hover:text-white">Privacy</a>
+                <a href="/support" class="hover:text-white">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</div>
+</body>
+</html>
